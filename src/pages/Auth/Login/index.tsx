@@ -50,14 +50,14 @@ const Login = () => {
     enableReinitialize: true,
 
     initialValues: {
-      username: "",
+      phone: "",
       password: "",
       remember: false,
     },
 
     validationSchema: Yup.object({
-      username: Yup.string().required("Zəhmət olmasa nömrə daxil edin!"),
-      password: Yup.string().required("Zəhmət olmasa Şifrə daxil edin!"),
+      phone: Yup.string().required("Zəhmət olmasa telefon nömrəsi daxil edin!"),
+      password: Yup.string().required("Zəhmət olmasa şifrə daxil edin!"),
       remember: Yup.bool(),
     }),
 
@@ -65,7 +65,7 @@ const Login = () => {
       const formData = new FormData();
 
       // Username
-      formData.append("username", values.username);
+      formData.append("phone", values.phone);
 
       // Password
       formData.append("password", values.password);
@@ -129,27 +129,27 @@ const Login = () => {
                         return false;
                       }}>
                       {errors && (
-                        <Alert color="danger">İstifadəçi adı və yaxud şifrə yanlışdır!</Alert>
+                        <Alert color="danger">Telefon nömrəsi və yaxud şifrə yanlışdır!</Alert>
                       )}
 
                       {/* Username */}
                       <div className="mb-3">
-                        <Label className="form-label">İstifadəçi adı</Label>
+                        <Label className="form-label">Telefon nömrəsi</Label>
 
                         <Input
                           type="text"
-                          name="username"
+                          name="phone"
                           className="form-control"
-                          placeholder="İstifadəçi adı daxil edin"
+                          placeholder="Telefon nömrəsi daxil edin"
                           onBlur={validation.handleBlur}
                           onChange={validation.handleChange}
-                          value={validation.values.username || ""}
+                          value={validation.values.phone || ""}
                           invalid={
-                            validation.touched.username && validation.errors.username ? true : false
+                            validation.touched.phone && validation.errors.phone ? true : false
                           }
                         />
-                        {validation.touched.username && validation.errors.username ? (
-                          <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
+                        {validation.touched.phone && validation.errors.phone ? (
+                          <FormFeedback type="invalid">{validation.errors.phone}</FormFeedback>
                         ) : null}
                       </div>
 

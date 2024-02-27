@@ -49,14 +49,14 @@ const UserProfile = () => {
     initialValues: {
       first_name: (user && user.first_name) || "",
       last_name: (user && user.last_name) || "",
-      username: (user && user.username) || "",
-      email: (user && user.email) || "",
+      phone: (user && user.phone) || "",
+      birth_date: (user && user.birth_date) || "",
     },
     validationSchema: Yup.object({
       first_name: Yup.string().required("Zəhmət olmasa adınızı daxil edin"),
       last_name: Yup.string().required("Zəhmət olmasa soyadınızı daxil edin"),
-      username: Yup.string().required("Zəhmət olmasa istifadəçi adınızı daxil edin"),
-      email: Yup.string().required("Zəhmət olmasa emailinizi daxil edin"),
+      phone: Yup.string().required("Zəhmət olmasa istifadəçi adınızı daxil edin"),
+      birth_date: Yup.string().required("Zəhmət olmasa doğum tarixinizi daxil edin"),
     }),
     onSubmit: (values) => {
       const formData = new FormData();
@@ -67,11 +67,11 @@ const UserProfile = () => {
       // Last Name
       formData.append("last_name", values.last_name);
 
-      // Username
-      formData.append("username", values.username);
+      // Phone
+      formData.append("phone", values.phone);
 
-      // Email
-      formData.append("email", values.email);
+      // Birth Date
+      formData.append("birth_date", values.birth_date);
 
       dispatch(updateAccount(formData));
     },
@@ -106,8 +106,7 @@ const UserProfile = () => {
                     <div className="flex-grow-1 align-self-center">
                       <div className="text-muted">
                         <h5>{`${user?.first_name} ${user?.last_name}`}</h5>
-                        <p className="mb-1">İstifadəçi adı: {user?.username}</p>
-                        <p className="mb-1">Email: {user?.email}</p>
+                        <p className="mb-1">Telefon nömrəsi: {user?.phone}</p>
                       </div>
                     </div>
                   </div>
@@ -174,43 +173,45 @@ const UserProfile = () => {
                       ) : null}
                     </Col>
 
-                    {/* Username */}
+                    {/* Phone */}
                     <Col sm="6" className="p-2">
-                      <Label className="form-label">İstifadəçi adı</Label>
+                      <Label className="form-label">Telefon nömrəsi</Label>
 
                       <Input
                         type="text"
-                        name="username"
+                        name="phone"
                         className="form-control"
-                        placeholder="İstifadəçi adı daxil edin"
+                        placeholder="Telefon nömrəsi daxil edin"
                         onBlur={validation.handleBlur}
                         onChange={validation.handleChange}
-                        value={validation.values.username || ""}
-                        invalid={
-                          validation.touched.username && validation.errors.username ? true : false
-                        }
+                        value={validation.values.phone || ""}
+                        invalid={validation.touched.phone && validation.errors.phone ? true : false}
                       />
-                      {validation.touched.username && validation.errors.username ? (
-                        <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
+                      {validation.touched.phone && validation.errors.phone ? (
+                        <FormFeedback type="invalid">{validation.errors.phone}</FormFeedback>
                       ) : null}
                     </Col>
 
-                    {/* Email */}
+                    {/* Birth Date */}
                     <Col sm="6" className="p-2">
-                      <Label className="form-label">Email</Label>
+                      <Label className="form-label">Doğum tarixi</Label>
 
                       <Input
-                        type="email"
-                        name="email"
+                        type="date"
+                        name="birth_date"
                         className="form-control"
-                        placeholder="Email daxil edin"
+                        placeholder="Doğum tarixi daxil edin"
                         onBlur={validation.handleBlur}
                         onChange={validation.handleChange}
-                        value={validation.values.email || ""}
-                        invalid={validation.touched.email && validation.errors.email ? true : false}
+                        value={validation.values.birth_date || ""}
+                        invalid={
+                          validation.touched.birth_date && validation.errors.birth_date
+                            ? true
+                            : false
+                        }
                       />
-                      {validation.touched.email && validation.errors.email ? (
-                        <FormFeedback type="invalid">{validation.errors.email}</FormFeedback>
+                      {validation.touched.birth_date && validation.errors.birth_date ? (
+                        <FormFeedback type="invalid">{validation.errors.birth_date}</FormFeedback>
                       ) : null}
                     </Col>
                   </Row>
