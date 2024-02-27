@@ -30,6 +30,12 @@ const menuItems: (IMenuHeader | IMenuItem)[] = [
     icon: "bx bx-home-circle",
     link: "/dashboard",
   },
+  {
+    id: "brands",
+    label: "Markalar",
+    icon: "bx bx-store",
+    link: "/brands",
+  },
 ];
 
 export { menuItems };
