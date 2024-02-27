@@ -6,6 +6,6 @@ export type Status = {
 };
 
 export type UpdateArgs = {
-  id: number;
+  slug: string;
   data: FormData;
 };
