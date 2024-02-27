@@ -1,3 +1,3 @@
 import { Order, Pagination } from "./";
 
-export type Default = Pagination & Order;
+export type DefaultFilter = Pagination & Order;

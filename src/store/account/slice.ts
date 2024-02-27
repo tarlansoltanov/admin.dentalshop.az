@@ -5,17 +5,13 @@ import { LOADING, SUCCESS, FAILURE } from "@/constants";
 
 // Types
 import { User } from "@/types";
+import { Status } from "@/types/store";
 
 // Actions
 import { getAccount, updateAccount } from "./actions";
 
 interface StateProps {
-  status: {
-    loading: boolean;
-    success: boolean;
-    failure: boolean;
-    lastAction: string | null;
-  };
+  status: Status;
   errors: any;
   user: User | null;
 }
